@@ -1,0 +1,3 @@
+[05-Aug-2014 13:00:24 UTC] WordPress database error Unknown column 'username' in 'field list' for query SELECT username FROM wp_users WHERE user_login = 'prakash'
+[06-Aug-2014 05:24:18 UTC] WordPress database error Unknown column 'username' in 'field list' for query SELECT username FROM wp_users WHERE user_login = 'u1'
+[06-Aug-2014 05:31:09 UTC] WordPress database error Unknown column 'username' in 'field list' for query SELECT username FROM wp_users WHERE `user_login` = 'amit'
