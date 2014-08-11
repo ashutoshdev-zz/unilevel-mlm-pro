@@ -410,6 +410,7 @@ $RunOnce = get_option('upgrade_plugin_mlm');
 if (!$RunOnce) {
     add_action('init', 'PaypalProcess');
     update_option('upgrade_plugin_mlm', true);
+    $wpdb->query("UPDATE {$table_prefix}mlm_users mu INNER JOIN {$table_prefix}users u ON mu.user_id = u.ID SET payment_date = u.user_registered where mu.payment_status='1' || mu.payment_status='2'");
 }
 
 function PaypalProcess() {
