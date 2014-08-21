@@ -144,38 +144,15 @@ function register_user_html_page(){
 			$error .= "\n Username already exists.";
 		
 		/******* check for the epin field ******/
-		if(isset($epin) && !empty($epin))
-		{
-		
-			if ( epin_exists( $epin ) ) 
-				{	$error .= "\n ePin already issued or wrong ePin.";
-				}
-		}
-		if($mlm_general_settings['sol_payment']==1)
-		{
-		if(isset($_POST['epin']) && empty($_POST['epin']))
-		{
-		$error .= "\n Please enter your ePin.";
-		}
-		
-		}
-                else 
-                {
-                if(isset($_POST['epin']) && empty($_POST['epin']) && empty($_POST['epin_value']))    
-                  {
-		$error .= "\n Please either enter the ePin or select the Product.";
-		           }  
-                   else if(empty($_POST['epin_value']))
-                {
-                 $error .= "\n Please select the Product.";
-                }
-                 else if(isset($_POST['epin']) && empty($_POST['epin']))
-                {
-                 $error .= "\n Please enter the ePin.";
-                }	
-				
-                    
-                }
+		if (!empty($epin) && epin_exists($epin)) {
+            $error .= "\n ePin already issued or wrong ePin.";
+        }
+        if (!empty($mlm_general_settings['sol_payment']) && empty($epin)) {
+            $error .= "\n Please enter your ePin.";
+        }
+        else if (empty($_POST['epin_value']) && empty($epin)) {
+            $error .= "\n Please either enter the ePin or select the Product.";
+        }
 		/******* check for the epin field ******/
 		
 		if ( checkInputField($password) ) 
@@ -337,11 +314,11 @@ function register_user_html_page(){
 						$paymentStatus = '2'; 
 					}
 				}
-                               else if(!empty($_POST['epin_value']))
-                                {
-                                   $productPrice = $wpdb->get_var("SELECT product_price FROM {$table_prefix}mlm_product_price WHERE p_id = '".$_POST['epin_value']."'");
-                                   $paymentStatus = '0'; 
-                                }
+			   else if(!empty($_POST['epin_value']))
+				{
+				   $productPrice = $wpdb->get_var("SELECT product_price FROM {$table_prefix}mlm_product_price WHERE p_id = '".$_POST['epin_value']."'");
+				   $paymentStatus = '0'; 
+				}
 				else
 				{	// to non epin 
 					$paymentStatus = '0'; 
