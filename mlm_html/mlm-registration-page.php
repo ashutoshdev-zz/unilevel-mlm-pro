@@ -4,16 +4,14 @@ require_once("php-form-validation.php");
 
 
 
-function register_user_html_page()
-{
-add_post_meta(5,'pv_value','va');
+function register_user_html_page(){
 	global $wpdb;
 	$table_prefix = mlm_core_get_table_prefix();
 	$error = '';
 	$chk = 'error';
 	global $current_user;
 	get_currentuserinfo();
-    $user_roles = $current_user->roles;
+    	$user_roles = $current_user->roles;
 	$user_role = array_shift($user_roles);
 
 		
