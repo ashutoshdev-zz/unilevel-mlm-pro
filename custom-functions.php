@@ -241,8 +241,6 @@ $item_name=!empty($paypal_settings['item_name'])?$paypal_settings['item_name']:'
 <input type="hidden" name="quantity" value="1">
 <input type="hidden" name="currency_code" value="<?php echo $currency; ?>">
 
-<!--<input type="hidden" name="cancel_return" value="">-->
-
 <input type="submit" value="Pay Now">
 </form>
 <?php
