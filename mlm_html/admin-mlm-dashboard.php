@@ -1,7 +1,7 @@
 <?php
 
 function mlmShowDashboard() {
-//echo "<pre>"; print_r($_SERVER); echo "</pre>";
+global $wp_rewrite; 
 
     $UMP_Instance = new UMP();
     $latest_ump_ver = $UMP_Instance->Plugin_Latest_Version();
